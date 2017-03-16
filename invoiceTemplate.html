@@ -1,0 +1,62 @@
+<div class = "container">
+
+<div class = "row">
+
+
+<div class="table-responsive">
+
+  <table class="table">
+
+  	<thead>
+
+  		<tr>
+            <th></th>
+
+ 			<th>{{description}}</th>
+
+  			<th>{{quantity}}</th>
+
+  			<th>${{cost}}</th>
+
+  			<th>{{result}}</th>
+        </tr>
+
+  	</thead>
+
+  	<tbody>
+
+  		<tr ng-repeat = "item in items"> <!-- pass empty values to the array on click of the button, those will be under ng-repeat -->
+            
+        <td><input type = "button" value = "+" class = "btn btn-default btn-sm" ng-click = "additems(); value = false" ng-show = "value">
+      	<input type = "button" value = "x" class = "btn btn-default btn-sm" ng-click = "removeitems(item)" ng-hide = "value"></td>
+
+  			<td><input type = "text" class="form-control input-sm" placeholder = "Item" ng-model = "item.nameOfItem"></td> 
+
+  			<td><input type = "text" class="form-control input-sm" placeholder = "Quantity" ng-model = "item.quantityOfItem"></td>
+
+  			<td><input type = "text" class="form-control input-sm" placeholder = "Cost per item" ng-model = "item.costOfItem"></td>
+
+  			<td>{{item.quantityOfItem * item.costOfItem | currency}}</td>
+
+        </tr>
+
+  	</tbody>
+
+  </table>
+
+</div>
+
+<hr>
+
+<div><B>Subtotal: {{Subtotal() | currency}}</B></div> <hr>
+<div>Tax (%): <input type = "text" placeholder = "Quantity" ng-model = "taxP" /> 
+     {{taxMoney() | currency}} </div> <hr>
+<div><B>Grand Total: {{grandTotal() | currency}}</B></div>  
+
+
+</div>
+
+</div>
+<div>
+
+
